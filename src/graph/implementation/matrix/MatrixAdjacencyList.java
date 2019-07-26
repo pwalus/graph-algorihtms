@@ -27,7 +27,7 @@ public class MatrixAdjacencyList implements AdjacencyListInterface {
 
     @Override
     public int next() {
-        return adjacencyList[actualElement++];
+        return adjacencyList[++actualElement];
     }
 
     @Override
@@ -36,6 +36,6 @@ public class MatrixAdjacencyList implements AdjacencyListInterface {
             return true;
         }
 
-        return actualElement == adjacencyList.length || adjacencyList[actualElement] == 0;
+        return actualElement == adjacencyList.length || adjacencyList[actualElement] == -1;
     }
 }

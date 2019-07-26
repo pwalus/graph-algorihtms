@@ -14,16 +14,24 @@ public class Edge implements EdgeInterface {
     }
 
     public static EdgeInterface of(int v, int w) {
-        return new Edge(v,w);
+        return new Edge(v, w);
     }
 
     @Override
     public int v() {
-        return 0;
+        return v;
     }
 
     @Override
     public int w() {
-        return 0;
+        return w;
+    }
+
+    @Override
+    public String toString() {
+        return "Edge{" +
+            "v=" + v +
+            ", w=" + w +
+            '}';
     }
 }

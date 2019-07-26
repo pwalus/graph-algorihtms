@@ -4,6 +4,7 @@ import graph.api.AdjacencyListInterface;
 import graph.api.EdgeInterface;
 import graph.api.GraphInterface;
 import graph.implementation.general.Edge;
+import java.util.Arrays;
 
 public class MatrixGraph implements GraphInterface {
 
@@ -42,23 +43,24 @@ public class MatrixGraph implements GraphInterface {
 
     @Override
     public void insert(EdgeInterface edge) {
+        if (!adjacencyMatrix[edge.v()][edge.w()]) {
+            numberOfEdges++;
+        }
         adjacencyMatrix[edge.v()][edge.w()] = true;
         if (!isDirected()) {
             adjacencyMatrix[edge.w()][edge.v()] = true;
-            numberOfEdges++;
         }
-
-        numberOfEdges++;
     }
 
     @Override
     public void remove(EdgeInterface edge) {
+        if (adjacencyMatrix[edge.v()][edge.w()]) {
+            numberOfEdges--;
+        }
         adjacencyMatrix[edge.v()][edge.w()] = false;
         if (!isDirected()) {
             adjacencyMatrix[edge.w()][edge.v()] = false;
-            numberOfEdges++;
         }
-        numberOfEdges++;
     }
 
     @Override
@@ -68,11 +70,13 @@ public class MatrixGraph implements GraphInterface {
 
     @Override
     public AdjacencyListInterface getAdjacencyList(int v) {
-        int[] adjacencyList = new int[numberOfEdges()];
+        int[] adjacencyList = new int[numberOfVertices];
+        Arrays.fill(adjacencyList, -1);
+
         int adjacencyListCount = 0;
-        for (int i = 0; i < v; i++) {
+        for (int i = 0; i < numberOfVertices; i++) {
             if (adjacencyMatrix[v][i]) {
-                adjacencyList[adjacencyListCount] = i;
+                adjacencyList[adjacencyListCount++] = i;
             }
         }
 
