@@ -12,7 +12,7 @@ public interface GraphInterface {
 
     public void remove(EdgeInterface edge);
 
-    public EdgeInterface getEdge(int v, int w);
+    public boolean isEdge(int v, int w);
 
     public AdjacencyListInterface getAdjacencyList(int v);
 

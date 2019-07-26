@@ -3,8 +3,6 @@ package graph.implementation.matrix;
 import graph.api.AdjacencyListInterface;
 import graph.api.EdgeInterface;
 import graph.api.GraphInterface;
-import graph.implementation.general.Edge;
-import java.util.Arrays;
 
 public class MatrixGraph implements GraphInterface {
 
@@ -64,22 +62,45 @@ public class MatrixGraph implements GraphInterface {
     }
 
     @Override
-    public EdgeInterface getEdge(int v, int w) {
-        return Edge.of(v, w);
+    public boolean isEdge(int v, int w) {
+        return adjacencyMatrix[v][w];
     }
 
     @Override
     public AdjacencyListInterface getAdjacencyList(int v) {
-        int[] adjacencyList = new int[numberOfVertices];
-        Arrays.fill(adjacencyList, -1);
+        return new AdjacencyArray(v);
+    }
 
-        int adjacencyListCount = 0;
-        for (int i = 0; i < numberOfVertices; i++) {
-            if (adjacencyMatrix[v][i]) {
-                adjacencyList[adjacencyListCount++] = i;
-            }
+    private class AdjacencyArray implements AdjacencyListInterface {
+
+        private final int v;
+
+        private int actualVertex = -1;
+
+        AdjacencyArray(int v) {
+            this.v = v;
         }
 
-        return MatrixAdjacencyList.of(adjacencyList);
+        @Override
+        public int begin() {
+            actualVertex = -1;
+            return next();
+        }
+
+        @Override
+        public int next() {
+            for (actualVertex++; actualVertex < numberOfVertices; actualVertex++) {
+                if (isEdge(v, actualVertex)) {
+                    return actualVertex;
+                }
+            }
+
+            return -1;
+        }
+
+        @Override
+        public boolean end() {
+            return actualVertex >= numberOfVertices;
+        }
     }
 }
