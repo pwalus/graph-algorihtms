@@ -50,16 +50,39 @@ public class ListGraph implements GraphInterface {
 
     @Override
     public void remove(EdgeInterface edge) {
-//        Node node = adjacencyList[edge.v()];
-//        while(node != null || node.value != edge.w()) {
-//            node = node.next;
-//        }
-//
-//        node.next = node.next.next;
+        removeByVertex(edge.v(), edge.w());
+        if (!isDirected) {
+            removeByVertex(edge.w(), edge.v());
+        }
+    }
+
+    private void removeByVertex(int v, int w) {
+        Node parent = null;
+        Node actualNode = adjacencyList[v];
+
+        while (actualNode != null) {
+            if (actualNode.value == w) {
+                if (parent == null) {
+                    adjacencyList[v] = actualNode.next;
+                } else {
+                    parent.next = actualNode.next;
+                }
+            }
+
+            parent = actualNode;
+            actualNode = actualNode.next;
+        }
     }
 
     @Override
     public boolean isEdge(int v, int w) {
+        AdjacencyListInterface adjacencyList = getAdjacencyList(v);
+        for (int vertex = adjacencyList.begin(); !adjacencyList.end(); vertex = adjacencyList.next()) {
+            if (vertex == w) {
+                return true;
+            }
+        }
+
         return false;
     }
 

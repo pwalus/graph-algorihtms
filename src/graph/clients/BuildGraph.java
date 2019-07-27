@@ -9,7 +9,7 @@ import graph.utilities.GraphIO;
 public class BuildGraph {
 
     public static void main(String[] args) {
-        GraphInterface graph = ListGraph.of(5, true);
+        GraphInterface graph = ListGraph.of(5, false);
 
         graph.insert(Edge.of(0, 1));
         graph.insert(Edge.of(0, 2));
