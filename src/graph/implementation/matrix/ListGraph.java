@@ -4,9 +4,9 @@ import graph.api.AdjacencyListInterface;
 import graph.api.EdgeInterface;
 import graph.api.GraphInterface;
 
-public class MatrixGraph implements GraphInterface {
+public class ListGraph implements GraphInterface {
 
-    private final boolean[][] adjacencyMatrix;
+    private final Node[] adjacencyList;
 
     private final boolean isDirected;
 
@@ -15,23 +15,23 @@ public class MatrixGraph implements GraphInterface {
     private int numberOfEdges = 0;
 
     public static GraphInterface of(int numberOfVertices, boolean isDirected) {
-        return new MatrixGraph(numberOfVertices, isDirected);
+        return new ListGraph(numberOfVertices, isDirected);
     }
 
-    private MatrixGraph(int numberOfVertices, boolean isDirected) {
-        adjacencyMatrix = new boolean[numberOfVertices][numberOfVertices];
+    private ListGraph(int numberOfVertices, boolean isDirected) {
         this.numberOfVertices = numberOfVertices;
         this.isDirected = isDirected;
+        this.adjacencyList = new Node[numberOfVertices];
     }
 
     @Override
     public int numberOfVertices() {
-        return this.numberOfVertices;
+        return numberOfVertices;
     }
 
     @Override
     public int numberOfEdges() {
-        return this.numberOfEdges;
+        return numberOfEdges;
     }
 
     @Override
@@ -41,29 +41,26 @@ public class MatrixGraph implements GraphInterface {
 
     @Override
     public void insert(EdgeInterface edge) {
-        if (!adjacencyMatrix[edge.v()][edge.w()]) {
-            numberOfEdges++;
+        adjacencyList[edge.v()] = new Node(edge.w(), adjacencyList[edge.v()]);
+        if (!isDirected) {
+            adjacencyList[edge.w()] = new Node(edge.v(), adjacencyList[edge.w()]);
         }
-        adjacencyMatrix[edge.v()][edge.w()] = true;
-        if (!isDirected()) {
-            adjacencyMatrix[edge.w()][edge.v()] = true;
-        }
+        numberOfEdges++;
     }
 
     @Override
     public void remove(EdgeInterface edge) {
-        if (adjacencyMatrix[edge.v()][edge.w()]) {
-            numberOfEdges--;
-        }
-        adjacencyMatrix[edge.v()][edge.w()] = false;
-        if (!isDirected()) {
-            adjacencyMatrix[edge.w()][edge.v()] = false;
-        }
+//        Node node = adjacencyList[edge.v()];
+//        while(node != null || node.value != edge.w()) {
+//            node = node.next;
+//        }
+//
+//        node.next = node.next.next;
     }
 
     @Override
     public boolean isEdge(int v, int w) {
-        return adjacencyMatrix[v][w];
+        return false;
     }
 
     @Override
@@ -71,11 +68,23 @@ public class MatrixGraph implements GraphInterface {
         return new AdjacencyArray(v);
     }
 
+    private class Node {
+
+        private final int value;
+
+        private Node next;
+
+        private Node(int value, Node next) {
+            this.value = value;
+            this.next = next;
+        }
+    }
+
     private class AdjacencyArray implements AdjacencyListInterface {
 
         private final int v;
 
-        private int actualVertex = -1;
+        private Node actualNode;
 
         AdjacencyArray(int v) {
             this.v = v;
@@ -83,24 +92,19 @@ public class MatrixGraph implements GraphInterface {
 
         @Override
         public int begin() {
-            actualVertex = -1;
-            return next();
+            actualNode = adjacencyList[v];
+            return actualNode == null ? -1 : actualNode.value;
         }
 
         @Override
         public int next() {
-            for (actualVertex++; actualVertex < numberOfVertices; actualVertex++) {
-                if (isEdge(v, actualVertex)) {
-                    return actualVertex;
-                }
-            }
-
-            return -1;
+            actualNode = actualNode.next;
+            return actualNode == null ? -1 : actualNode.value;
         }
 
         @Override
         public boolean end() {
-            return actualVertex >= numberOfVertices;
+            return actualNode == null;
         }
     }
 }
