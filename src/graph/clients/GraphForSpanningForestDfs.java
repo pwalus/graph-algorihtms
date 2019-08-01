@@ -2,15 +2,16 @@ package graph.clients;
 
 import graph.api.GraphInterface;
 import graph.implementation.general.Edge;
-import graph.implementation.matrix.ListGraph;
 import graph.implementation.matrix.MatrixGraph;
-import graph.utilities.GraphDfs;
 import graph.utilities.GraphDfsSpanningTree;
+import graph.utilities.VertexConsumer;
 
 public class GraphForSpanningForestDfs {
 
+    protected Integer sum = 0;
+
     public static void main(String[] args) {
-        GraphInterface graph = MatrixGraph.of(13 , false);
+        GraphInterface graph = MatrixGraph.of(13, false);
 
         graph.insert(Edge.of(0, 1));
         graph.insert(Edge.of(0, 9));
@@ -35,6 +36,5 @@ public class GraphForSpanningForestDfs {
         System.out.println(graphDfsSpanningTree.parentOf(4));
         System.out.println(graphDfsSpanningTree.parentOf(1));
         System.out.println(graphDfsSpanningTree.parentOf(9));
-
     }
 }
