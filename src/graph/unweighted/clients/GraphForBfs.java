@@ -1,10 +1,9 @@
-package graph.clients;
+package graph.unweighted.clients;
 
-import graph.api.GraphInterface;
-import graph.implementation.general.Edge;
-import graph.implementation.matrix.ListGraph;
-import graph.utilities.GraphBfsSearch;
-import graph.utilities.GraphDfs;
+import graph.unweighted.api.GraphInterface;
+import graph.unweighted.implementation.general.Edge;
+import graph.unweighted.implementation.matrix.ListGraph;
+import graph.unweighted.utilities.GraphBfsSearch;
 
 public class GraphForBfs {
 

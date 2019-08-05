@@ -1,7 +1,7 @@
-package graph.utilities;
+package graph.unweighted.utilities;
 
-import graph.api.AdjacencyListInterface;
-import graph.api.GraphInterface;
+import graph.unweighted.api.AdjacencyListInterface;
+import graph.unweighted.api.GraphInterface;
 
 public class GraphIO {
 

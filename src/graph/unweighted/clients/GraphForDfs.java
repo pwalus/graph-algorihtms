@@ -1,12 +1,9 @@
-package graph.clients;
+package graph.unweighted.clients;
 
-import graph.api.GraphInterface;
-import graph.implementation.general.Edge;
-import graph.implementation.matrix.ListGraph;
-import graph.implementation.matrix.MatrixGraph;
-import graph.utilities.GraphDfs;
-import graph.utilities.GraphIO;
-import graph.utilities.GraphPath;
+import graph.unweighted.api.GraphInterface;
+import graph.unweighted.implementation.general.Edge;
+import graph.unweighted.implementation.matrix.ListGraph;
+import graph.unweighted.utilities.GraphDfs;
 
 public class GraphForDfs {
 

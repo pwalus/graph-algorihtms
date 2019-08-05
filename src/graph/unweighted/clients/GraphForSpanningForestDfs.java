@@ -1,10 +1,9 @@
-package graph.clients;
+package graph.unweighted.clients;
 
-import graph.api.GraphInterface;
-import graph.implementation.general.Edge;
-import graph.implementation.matrix.MatrixGraph;
-import graph.utilities.GraphDfsSpanningTree;
-import graph.utilities.VertexConsumer;
+import graph.unweighted.api.GraphInterface;
+import graph.unweighted.implementation.general.Edge;
+import graph.unweighted.implementation.matrix.MatrixGraph;
+import graph.unweighted.utilities.GraphDfsSpanningTree;
 
 public class GraphForSpanningForestDfs {
 

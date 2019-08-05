@@ -1,8 +1,8 @@
-package graph.implementation.matrix;
+package graph.unweighted.implementation.matrix;
 
-import graph.api.AdjacencyListInterface;
-import graph.api.EdgeInterface;
-import graph.api.GraphInterface;
+import graph.unweighted.api.AdjacencyListInterface;
+import graph.unweighted.api.EdgeInterface;
+import graph.unweighted.api.GraphInterface;
 
 public class MatrixGraph implements GraphInterface {
 

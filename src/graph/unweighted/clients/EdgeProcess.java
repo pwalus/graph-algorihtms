@@ -1,9 +1,9 @@
-package graph.clients;
+package graph.unweighted.clients;
 
-import graph.implementation.general.Edge;
-import graph.api.AdjacencyListInterface;
-import graph.api.EdgeInterface;
-import graph.api.GraphInterface;
+import graph.unweighted.implementation.general.Edge;
+import graph.unweighted.api.AdjacencyListInterface;
+import graph.unweighted.api.EdgeInterface;
+import graph.unweighted.api.GraphInterface;
 
 public class EdgeProcess {
 

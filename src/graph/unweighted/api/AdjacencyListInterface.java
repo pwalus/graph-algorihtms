@@ -1,4 +1,4 @@
-package graph.api;
+package graph.unweighted.api;
 
 public interface AdjacencyListInterface {
 

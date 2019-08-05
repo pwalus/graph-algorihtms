@@ -1,8 +1,7 @@
-package graph.utilities;
+package graph.unweighted.utilities;
 
-import graph.api.GraphInterface;
-import graph.implementation.general.Edge;
-import java.util.Random;
+import graph.unweighted.api.GraphInterface;
+import graph.unweighted.implementation.general.Edge;
 
 public class GraphRandom {
 
