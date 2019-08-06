@@ -14,15 +14,14 @@ public class BellmanFord {
 
     private final List<Float> verticesWeight;
 
-    private final List<Integer> verticesParent;
+    private final int[] verticesParent;
 
     public BellmanFord(Graph graph) {
         this.graph = graph;
         verticesWeight = new ArrayList<>(graph.getNumberOfVertices());
-        verticesParent = new ArrayList<>(graph.getNumberOfVertices());
+        verticesParent = new int[graph.getNumberOfVertices()];
         for (int i = 0; i < graph.getNumberOfVertices(); i++) {
             verticesWeight.add(i, Float.POSITIVE_INFINITY);
-            verticesParent.add(i, null);
         }
 
         verticesWeight.set(0, (float) 0);
@@ -53,21 +52,13 @@ public class BellmanFord {
         int v = edge.v();
         float weight = edge.weight();
 
-        if(verticesWeight.get(w) + weight < verticesWeight.get(v)){
+        if (verticesWeight.get(w) + weight < verticesWeight.get(v)) {
             verticesWeight.set(v, verticesWeight.get(w) + weight);
-            verticesParent.set(v, w);
+            verticesParent[v] = w;
         }
-
     }
 
-    public void printPath(Integer source, Integer v) {
-        if (v.equals(source)) {
-            System.out.println();
-            return;
-        }
-
-        Integer parent = verticesParent.get(v);
-        System.out.print(verticesParent.get(v));
-        printPath(source, parent);
+    public int[] getVerticesParent() {
+        return verticesParent;
     }
 }

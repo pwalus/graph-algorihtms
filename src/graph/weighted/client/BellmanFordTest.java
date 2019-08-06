@@ -3,6 +3,7 @@ package graph.weighted.client;
 import graph.general.Edge;
 import graph.weighted.implementation.Graph;
 import graph.weighted.utilities.BellmanFord;
+import graph.weighted.utilities.PrintPath;
 
 public class BellmanFordTest {
 
@@ -26,6 +27,6 @@ public class BellmanFordTest {
         BellmanFord bellmanFord = new BellmanFord(graph);
 
         System.out.println(bellmanFord.search());
-        bellmanFord.printPath(0, 3);
+        PrintPath.print(bellmanFord.getVerticesParent(), 0, 3);
     }
 }
