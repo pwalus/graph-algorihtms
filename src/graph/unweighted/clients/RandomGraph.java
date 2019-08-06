@@ -1,7 +1,7 @@
 package graph.unweighted.clients;
 
 import graph.unweighted.api.GraphInterface;
-import graph.unweighted.implementation.matrix.MatrixGraph;
+import graph.unweighted.implementation.MatrixGraph;
 import graph.unweighted.utilities.GraphIO;
 import graph.unweighted.utilities.GraphRandom;
 

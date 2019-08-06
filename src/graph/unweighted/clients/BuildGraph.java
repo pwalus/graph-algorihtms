@@ -1,8 +1,8 @@
 package graph.unweighted.clients;
 
+import graph.general.Edge;
 import graph.unweighted.api.GraphInterface;
-import graph.unweighted.implementation.general.Edge;
-import graph.unweighted.implementation.matrix.ListGraph;
+import graph.unweighted.implementation.ListGraph;
 import graph.unweighted.utilities.GraphIO;
 import graph.unweighted.utilities.GraphPath;
 

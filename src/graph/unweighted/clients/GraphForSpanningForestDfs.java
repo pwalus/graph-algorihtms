@@ -1,8 +1,8 @@
 package graph.unweighted.clients;
 
+import graph.general.Edge;
 import graph.unweighted.api.GraphInterface;
-import graph.unweighted.implementation.general.Edge;
-import graph.unweighted.implementation.matrix.MatrixGraph;
+import graph.unweighted.implementation.MatrixGraph;
 import graph.unweighted.utilities.GraphDfsSpanningTree;
 
 public class GraphForSpanningForestDfs {

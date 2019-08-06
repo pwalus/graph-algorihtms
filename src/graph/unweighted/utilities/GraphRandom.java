@@ -1,7 +1,7 @@
 package graph.unweighted.utilities;
 
+import graph.general.Edge;
 import graph.unweighted.api.GraphInterface;
-import graph.unweighted.implementation.general.Edge;
 
 public class GraphRandom {
 

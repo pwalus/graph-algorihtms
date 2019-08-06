@@ -1,4 +1,4 @@
-package graph.unweighted.implementation.matrix;
+package graph.unweighted.implementation;
 
 import graph.unweighted.api.AdjacencyListInterface;
 import graph.unweighted.api.EdgeInterface;

@@ -1,9 +1,9 @@
 package graph.unweighted.utilities;
 
+import graph.general.Edge;
 import graph.unweighted.api.AdjacencyListInterface;
 import graph.unweighted.api.EdgeInterface;
 import graph.unweighted.api.GraphInterface;
-import graph.unweighted.implementation.general.Edge;
 import java.util.LinkedList;
 import java.util.Queue;
 

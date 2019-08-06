@@ -1,6 +1,6 @@
 package graph.unweighted.clients;
 
-import graph.unweighted.implementation.general.Edge;
+import graph.general.Edge;
 import graph.unweighted.api.AdjacencyListInterface;
 import graph.unweighted.api.EdgeInterface;
 import graph.unweighted.api.GraphInterface;

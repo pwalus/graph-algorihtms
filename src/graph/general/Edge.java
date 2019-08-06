@@ -1,4 +1,4 @@
-package graph.unweighted.implementation.general;
+package graph.general;
 
 import graph.unweighted.api.EdgeInterface;
 
