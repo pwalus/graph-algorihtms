@@ -1,10 +1,13 @@
 package graph.weighted.implementation;
 
 import graph.unweighted.api.EdgeInterface;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class Graph {
 
@@ -16,10 +19,12 @@ public class Graph {
 
     public Graph(int numberOfVertices) {
         this.numberOfVertices = numberOfVertices;
+        for (int v = 0; v < numberOfVertices; v++) {
+            adjacencyList.put(v, new LinkedList<>());
+        }
     }
 
     public void add(EdgeInterface edge) {
-        adjacencyList.putIfAbsent(edge.v(), new LinkedList<>());
         adjacencyList.get(edge.v()).add(edge);
         numberOfEdges++;
     }
