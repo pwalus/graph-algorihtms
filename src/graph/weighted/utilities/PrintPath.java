@@ -9,7 +9,7 @@ public class PrintPath {
         }
 
         Integer parent = verticesParent[v];
-        System.out.print(verticesParent[v]);
+        System.out.print(" -> " + verticesParent[v]);
         print(verticesParent, source, parent);
     }
 }
